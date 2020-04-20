@@ -2,8 +2,9 @@
 ## Participants 
  - **Kamil Sudoł (Team Leader)**
  - Jakub Strugała
-- Wojciech Kuźmik
-### Do we need more people: Maybe
+ - Wojciech Kuźmik
+ - Michał Kuś
+### Do we need more people: No
 ## Short description of the idea
 EatGuesser is an app that allows you to find the most appropriate kitchen recipe on the basis of the groceries you possess. 
 It may be accomplished by either scanning the products using your device camera or by manual typing each name of the product.
