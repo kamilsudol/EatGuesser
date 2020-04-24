@@ -14,6 +14,6 @@ Firstly, (we believe 1 week will be needed) we are going to make fixed database 
  - https://github.com/fictivekin/openrecipes (The Database section -> example dump of data)
  - https://fdc.nal.usda.gov/download-datasets.html
 or just in case of some problems with dealing with the database we can use API with premade one under this link:
-https://developer.edamam.com/edamam-recipe-api.
+ - https://developer.edamam.com/edamam-recipe-api.
 Until half of deadline we are planning to have database ready and already created website by Django to make our further features available on it.
 After that we want to implement geolocation of the nearest shops (with geopy) on our website and user interface (possibly with wxPython) to implement adding own recipes and the rest of features.
