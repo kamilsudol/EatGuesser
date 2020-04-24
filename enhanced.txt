@@ -1,7 +1,7 @@
 EatGuesser - enhanced description
 
 Possible modules needed (initial version): 
-- pandas
+- pandas (maybe)
 - numpy (mabye)
 - json
 - Django
