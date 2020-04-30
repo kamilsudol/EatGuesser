@@ -9,13 +9,15 @@ Possible modules needed:
 -Heroku
 
 Initial step by step plan:
-Firstly, (we believe 1 week will be needed) we are going to make fixed database by json (extracting product names, urls to recipes, adding calories, etc.) from:
+Firstly, (we believe 1 week will be needed) we are going to make fixed database by json (extracting product names, urls to recipes,
+adding calories, etc.) from:
  - https://github.com/fictivekin/openrecipes (The Database section -> example dump of data)
  - https://fdc.nal.usda.gov/download-datasets.html
 or just in case of some problems with dealing with the database we can use API with premade one under this link:
 https://developer.edamam.com/edamam-recipe-api.
-Until half of deadline we are planning to have database ready and already created website by Django to make our further features available on it.
-After that we want to implement geolocation of the nearest shops (with geopy) on our website and user interface to implement adding own recipes and the rest of features.
+Until half of deadline we are planning to have database ready and already created website by Django to make our further features
+available on it. After that we want to implement geolocation of the nearest shops (with geopy) on our website and user interface 
+to implement adding own recipes and the rest of features.
 
 
 Schedule:
@@ -27,7 +29,8 @@ Week 0 - 1:
 -creating initial Django web-app (Week 1),
 -deploying Django app using Heroku (Week 1).
 
-This is the initial stage of our work. During this phase we are going to prepare for using Django and creating web-app with it. Later on we plan to deploy it onto the Heroku server for storing upcoming data from Edamam API.  
+This is the initial stage of our work. During this phase we are going to prepare for using Django and creating web-app with it. 
+Later on we plan to deploy it onto the Heroku server for storing upcoming data from Edamam API.  
 ---------------------------------------------------------------------------------------------------------------------------
 Week 2 - 3 (Half of the deadline):
 
@@ -36,7 +39,9 @@ Week 2 - 3 (Half of the deadline):
 - creating working shopping list  (Week 3),
 - placing working filters onto the web-app such as filtering by calories, diet labels, etc (Week 3).
 
-At this stage, the user will be able to visit our site, search for a recipe by typing in ingredients he already has. By selecting the appropriate filters, he will be able to choose if what he looks for is high-protein, low-fat, low-carb, vegan, etc. Then he will receive the most appropriate list of available recipes.
+At this stage, the user will be able to visit our site, search for a recipe by typing in ingredients he already has. By selecting 
+the appropriate filters, he will be able to choose if what he looks for is high-protein, low-fat, low-carb, vegan, etc. Then he will 
+receive the most appropriate list of available recipes.
 ---------------------------------------------------------------------------------------------------------------------------
 Week 4 - 5:
 
@@ -45,12 +50,14 @@ Week 4 - 5:
 - creating a list of favourite recipes (Week 5),
 - saving a shopping list on the user’s profile (Week 5).
 
-At this stage user will be able to create a new account, sign in and add recipes to his list of favourites. User will have access to his shopping list, where he will be able to check what groceries he yet needs.
+At this stage user will be able to create a new account, sign in and add recipes to his list of favourites. User will have access 
+to his shopping list, where he will be able to check what groceries he yet needs.
 ---------------------------------------------------------------------------------------------------------------------------
 Week 6 - 7 (Final deadline):
 
 - adding geolocalization feature to show the localization of the nearest shop (Week 6-7),
 - enabling user to add personal notes to favourite recipes (Week 6-7).
 
-At this stage we hope to complete the tasks above and if there will be some time left, we can add some extra features like rating the recipes or adding recipes by user community.
+At this stage we hope to complete the tasks above and if there will be some time left, we can add some extra features like rating 
+the recipes or adding recipes by user community.
 ---------------------------------------------------------------------------------------------------------------------------
