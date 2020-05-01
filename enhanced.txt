@@ -35,7 +35,7 @@ Later on we plan to deploy it onto the Heroku server for storing upcoming data f
 Week 2 - 3 (Half of the deadline):
 
 - connecting API with our web-app (Week 2),
-- implementing fixed search engine for recipes (Week 2-3),
+- implementing search engine for recipes (Week 2-3),
 - creating working shopping list  (Week 3),
 - placing working filters onto the web-app such as filtering by calories, diet labels, etc (Week 3).
 
