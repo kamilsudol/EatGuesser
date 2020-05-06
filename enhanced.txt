@@ -26,8 +26,8 @@ Week 0 - 1:
 
 -learning the basics of using API (creating requests, accessing API’s information) (DONE),
 -gathering information about Django and Heroku usage (DONE),
--creating initial Django web-app (Week 1),
--deploying Django app using Heroku (Week 1).
+-creating initial Django web-app (DONE),
+-deploying Django app using Heroku (DONE).
 
 This is the initial stage of our work. During this phase we are going to prepare for using Django and creating web-app with it. 
 Later on we plan to deploy it onto the Heroku server for storing upcoming data from Edamam API.  
