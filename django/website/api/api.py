@@ -1,9 +1,8 @@
 from base import Search, log
-import os 
 
 req = Search(
-    recipes_appid=os.environ.get('API_ID'),
-    recipes_appkey=os.environ.get('APP_KEY'))
+    recipes_appid='0b1a1954',
+    recipes_appkey='e3dc699ff1678979bc89ed33f6d01f8d')
 
 question = "Type the ingredient you want for recipe to include:\n"
 query = input(question)
