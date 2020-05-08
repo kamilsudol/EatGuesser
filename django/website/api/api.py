@@ -1,5 +1,5 @@
 from base import Search, log
-import os 
+import os
 
 req = Search(
     recipes_appid=os.environ.get('API_ID'),
