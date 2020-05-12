@@ -8,9 +8,9 @@
 				<a class="mr-2" >Calories: {{ recipe.calories }}</a>
 				<small class="text-muted">{{ recipe.cautions }}{{ recipe.dietLabels }}{{ recipe.healthLabels }}</small>
 			  </div>
-			  <h2><a class="article-title" href="#">{{ recipe.url }}</a></h2>
+			  <h2><a class="article-title" href={{recipe.url}}>{{ recipe.url }}</a></h2>
 			  {% for ingr in recipe.ingredient_quantities %}
-			  <p class="article-content">{{ ingr.text }} , weight: {{ingr.weight}}</p>
+			  <p class="article-content">{{ ingr.text }}, weight: {{ingr.weight}}</p>
 			  {% endfor %}
 			</div>
 		  </article>
