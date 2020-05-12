@@ -1,4 +1,4 @@
-from base import log
+from ..base_dir.base import log
 
 
 class APIError(Exception):

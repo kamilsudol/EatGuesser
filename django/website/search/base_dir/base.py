@@ -1,7 +1,7 @@
 import requests
 import json
 import logging as log
-from exceptions import APIError, NotKnownQuery, InvalidKey, \
+from ..except_dir.exceptions import APIError, NotKnownQuery, InvalidKey, \
     InvalidRecipeApiKey
 
 log.basicConfig(filename='output.log', level=log.INFO,
