@@ -25,7 +25,7 @@ SECRET_KEY = 'pxq-^!c3j*a^ha+-^6xoggqyzc(aik&5qdefa25+p(lg+3yf&e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['eat--gusser.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['eat-guesser.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
