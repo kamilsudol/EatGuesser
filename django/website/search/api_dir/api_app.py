@@ -1,5 +1,6 @@
 from ..base_dir.base import Search, log
 import os 
+#import numpy as np
 
 class Api:
     def ret_req(self):

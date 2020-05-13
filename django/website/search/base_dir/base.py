@@ -3,6 +3,7 @@ import json
 import logging as log
 from ..except_dir.exceptions import APIError, NotKnownQuery, InvalidKey, \
     InvalidRecipeApiKey
+import numpy as np
 
 log.basicConfig(filename='output.log', level=log.INFO,
                 format='%(message)s')
@@ -74,8 +75,8 @@ class Recipe:
         self.cautions = cautions
         self.totalDaily = []
         self.totalDaily = totalDaily or []
-        self.totalWeight = totalWeight
-        self.calories = calories
+        self.totalWeight = np.round(totalWeight,2)
+        self.calories = np.round(calories,2)
         self.totalTime = totalTime
         self.totalNutrients = []
         self.totalNutrients = totalNutrients or []
