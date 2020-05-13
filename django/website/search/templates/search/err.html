@@ -3,5 +3,14 @@
 	{% for recipe in database %}
         <!--<h1>{{recipe}}</h1>-->
         <span style="font-size: x-large;">{{recipe}}</span>
-	{% endfor %}
+        {% endfor %}
+        <form method="GET" action="{% url 'search-results' %}">
+                <pre class="tab"> </pre>
+                <a>Do you want to try again?</a>
+                <input name="q" value="{{request.GET.q}}" placeholder="Type your products...">
+                <button class="btn btn-success" type="submit">
+                        Search
+                </button>
+                <pre class="tab"> </pre>
+        </form>
 {% endblock content %}
