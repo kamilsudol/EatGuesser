@@ -35,3 +35,4 @@ ujson==1.35
 unicodecsv==0.14.1
 urllib3==1.25.8
 widgetsnbextension==3.5.1
+django-heroku==0.3.1
