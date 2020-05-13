@@ -1,10 +1,10 @@
 {% extends "search/base.html" %}
 {% block content %}
-<form method="GET" action="{% url 'search-results' %}">
+<form style="text-align: center;" method="GET" action="{% url 'search-results' %}">
 	<h2>Welcome to EatGuesser!</h2>
 	<pre class="tab"> </pre>
-	<a>Type your products:</a>
-	<input name="q" value="{{request.GET.q}}" placeholder="Search...">
+	<!--<a style="text-align: center;">Type your products:</a>-->
+	<input name="q" value="{{request.GET.q}}" placeholder="Type your products...">
 	<button class="btn btn-success" type="submit">
 		Search
 	</button>
