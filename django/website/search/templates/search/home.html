@@ -1,10 +1,16 @@
 {% extends "search/base.html" %}
 {% block content %}
 <form method="GET" action="{% url 'search-results' %}">
+	<h2>Welcome to EatGuesser!</h2>
+	<pre class="tab"> </pre>
 	<a>Type your products:</a>
 	<input name="q" value="{{request.GET.q}}" placeholder="Search...">
 	<button class="btn btn-success" type="submit">
 		Search
 	</button>
+	<pre class="tab"> </pre>
+	<h4>What is EatGuesser?</h4>
+	<pre class="tab"> </pre>
+	<div>EatGuesser is a simple app that allows you to find the most appropriate kitchen recipe on the basis of the groceries you possess. It may be accomplished by manual typing each name of the product.</div>
 </form>
 {% endblock content %}
