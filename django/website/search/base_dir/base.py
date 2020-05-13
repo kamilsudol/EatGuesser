@@ -64,19 +64,21 @@ class Recipe:
                  ingredient_names=None,
                  edamam=None):
         self.ingredient_names = ingredient_names or []
-        self.ingredient_quantities = ingredients or []
+        for x in ingredients:
+            x['weight'] = np.round(x['weight'],2)
+        self.ingredient_quantities = ingredients
         self.label = label
         self.dietLabels = dietLabels or []
         self.healthLabels = healthLabels or []
         self.uri = uri
         self.url = url or self.uri
         self.share_url = share_url or self.url
-        self.yields = yields
+        self.yields =yields
         self.cautions = cautions
         self.totalDaily = []
         self.totalDaily = totalDaily or []
-        self.totalWeight = np.round(totalWeight,2)
-        self.calories = np.round(calories,2)
+        self.totalWeight = totalWeight
+        self.calories = int(calories)
         self.totalTime = totalTime
         self.totalNutrients = []
         self.totalNutrients = totalNutrients or []
