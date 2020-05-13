@@ -1,6 +1,7 @@
 {% extends "search/base.html" %}
 {% block content %}
 <form method="GET" action="{% url 'search-results' %}">
+	<a>Type your products:</a>
 	<input name="q" value="{{request.GET.q}}" placeholder="Search...">
 	<button class="btn btn-success" type="submit">
 		Search

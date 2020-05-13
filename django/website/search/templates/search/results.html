@@ -6,7 +6,17 @@
 			<div class="media-body">
 			  <div class="article-metadata">
 				<a class="mr-2" >Calories: {{ recipe.calories }}</a>
-				<small class="text-muted">{{ recipe.cautions }}{{ recipe.dietLabels }}{{ recipe.healthLabels }}</small>
+				<small class="text-muted">Tags: {% for x in recipe.cautions %}
+						<small class="text-muted">{{x}}</small>
+						{% endfor %}
+						{% for x in recipe.dietLabels %}
+						<small class="text-muted">{{x}}</small>
+						{% endfor %}
+						{% for x in recipe.healthLabels %}
+						<small class="text-muted">{{x}}</small>
+						{% endfor %}
+					<!--{{ recipe.cautions }}{{ recipe.dietLabels }}{{ recipe.healthLabels }}-->
+				</small>
 			  </div>
 			  <h2><a class="article-title" href={{recipe.url}}>{{ recipe.url }}</a></h2>
 			  {% for ingr in recipe.ingredient_quantities %}

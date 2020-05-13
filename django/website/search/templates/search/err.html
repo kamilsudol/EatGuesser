@@ -1,0 +1,7 @@
+{% extends "search/base.html" %}
+{% block content %}
+	{% for recipe in database %}
+        <!--<h1>{{recipe}}</h1>-->
+        <span style="font-size: x-large;">{{recipe}}</span>
+	{% endfor %}
+{% endblock content %}
