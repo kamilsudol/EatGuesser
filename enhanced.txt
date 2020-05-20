@@ -36,8 +36,8 @@ Week 2 - 3 (Half of the deadline):
 
 - connecting API with our web-app (DONE),
 - implementing search engine for recipes (DONE),
-- creating working shopping list  (Week 3),
-- placing working filters onto the web-app such as filtering by calories, diet labels, etc (Week 3).
+- creating working shopping list  (DONE),
+- placing working filters onto the web-app such as filtering by calories, diet labels, etc (DONE).
 
 At this stage, the user will be able to visit our site, search for a recipe by typing in ingredients he already has. By selecting 
 the appropriate filters, he will be able to choose if what he looks for is high-protein, low-fat, low-carb, vegan, etc. Then he will 
