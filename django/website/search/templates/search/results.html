@@ -46,7 +46,13 @@
 				, weight: {{ingr.weight}} g
 				<div></div>
 				{% endfor %}
+				<pre class="tab"> </pre>
+				<div>
+					<img src="{{ recipe.image }}" alt="{{ recipe }}">
+				</div>
+				<pre class="tab"> </pre>
 			</div>
 		  </article>
 	{% endfor %}
+	<pre class="tab"> </pre>
 {% endblock content %}
