@@ -54,10 +54,16 @@ def results(request):
 		return render(request, 'search/results.html', context)
 	else:
 		message = 'No matching recipes for: ' + str(query) + ' and filters: '
+		flag2 = []
 		for label in healthLabels:
+			flag2.append(label)
 			message += label + ', '
 
 		for label in dietLabels:
+			flag2.append(label)
 			message += label + ', '
-		return render(request, 'search/err.html', {'errorMessage': message})
+		if len(flag2):
+			return render(request, 'search/err.html', {'errorMessage': message})
+		else:
+			return render(request, 'search/err.html', {'errorMessage': message + "None"})
 	
