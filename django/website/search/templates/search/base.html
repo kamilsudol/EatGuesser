@@ -49,14 +49,58 @@
           <div class="col-md-4">
             <div class="content-section">
               <h3>Shopping list</h3>
-              <p class='text-muted'style="text-align:center">Products you need to buy:
-                <ul class="list-group">
-                  <li class="list-group-item list-group-item-light">product1</li>
-                  <li class="list-group-item list-group-item-light">product2</li>
-                  <li class="list-group-item list-group-item-light">product3</li>
-                  <li class="list-group-item list-group-item-light">etc</li>
-                </ul>
-              </p>
+              <!-- Shopping List -->
+              <p class='text-muted'style="text-align:center">Products you need to buy: </p>
+                <!-- <script> 
+                  function auto_grow(element) {
+                    element.style.height = "5px";
+                    element.style.height = (element.scrollHeight)+"px";
+                  }
+                </script>-->
+                <!-- <ul class="list-group">
+                <select name="courses" multiple="multiple" size="30" style="height: 100%;"></select> -->
+                <p hidden id="counter"0></p>
+                <script>
+                    function myFunction() {
+                      var value = document.getElementById("counter");
+                      var number = value.innerHTML;
+                      number++;
+                      var x = document.createElement("INPUT");
+                      var y = document.createElement("INPUT");
+                      x.setAttribute("type", "text");
+                      x.setAttribute("id", "textbox" + number.toString());
+                      value.innerHTML = number;
+                      x.setAttribute("onkeypress", "javascript:doit_onkeypress(event);");
+                      x.setAttribute("placeholder", "New product");
+                      y.setAttribute("type", "checkbox");
+                      document.body.appendChild(y);
+                      document.body.appendChild(x);
+                    }
+                    
+                </script>
+                  <script type="text/javascript">
+                      function doit_onkeypress(event){
+                          if (event.keyCode == 13 || event.which == 13){
+                            if(document.getElementById("counter").innerHTML < 9)
+                              {
+                                  myFunction();
+                                  var number = document.getElementById("counter").innerHTML;
+                                  document.getElementById("textbox"+(number).toString()).focus();
+                              }
+                          }
+                      }
+                  </script>
+                <input type="checkbox"/>
+                  <input type="text" placeholder="New product" onkeypress="javascript:doit_onkeypress(event);" />
+
+
+
+
+                
+                  <!--<textarea oninput="auto_grow(this)"></textarea>-->
+                  <!--<textarea name="Products" cols="10" rows="20"></textarea>
+                </ul>-->
+              <!-- </p> -->
             </div>
           </div>
         </div>
