@@ -12,6 +12,13 @@ def subsite(request):
 	return render(request, 'search/subsite.html', {'title': 'Subsite'})
 
 def results(request):
+	def flip_order(request):
+		calories_sorting_order = request.GET.get('order')
+		if calories_sorting_order is False:
+			calories_sorting_order = True
+		else:
+			calories_sorting_order = False
+
 	query = request.GET.get('q')
 
 	dietLabels = diet_tags(request)
@@ -20,7 +27,7 @@ def results(request):
 	req = Api().ret_req()
 	results = req.search_recipe(query, healthLabels, dietLabels)
 	context = {
-		'database': results,
+		'database': sorted(req.search_recipe(query), key = lambda recipe: recipe.calories), # Recipes.objects.all()
 		'dietLabels': dietLabels,
 		'healthLabels': healthLabels,
 	}
