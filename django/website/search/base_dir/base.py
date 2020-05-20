@@ -15,10 +15,17 @@ class API(object):
         self.recipes_appid = recipes_appid
         self.recipes_appkey = recipes_appkey
 
-    def search_recipe(self, query="pizza"):
+    def search_recipe(self, query="pizza", healthLabels = [], dietLabels = []):
+        health = ""
+        for label in healthLabels:
+            health = health + "&health=" + label
+
+        diet = ""
+        for label in dietLabels:
+            diet = diet + "&diet=" + label
         url = 'https://api.edamam.com/search?q=' + query + '&app_id=' + \
               self.recipes_appid + '&app_key=' + \
-              self.recipes_appkey
+              self.recipes_appkey + health + diet
 
         r = requests.get(url)
         if r.status_code == 401:
@@ -28,8 +35,8 @@ class API(object):
 
 class Search(API):
 
-    def search_recipe(self, query="pizza"):
-        data = super().search_recipe(query)
+    def search_recipe(self, query="pizza", healthLabels = [], dietLabels = []):
+        data = super().search_recipe(query, healthLabels, dietLabels)
         hits = data["hits"]
         for hit in hits:
             data = hit["recipe"]

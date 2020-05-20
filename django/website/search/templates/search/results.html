@@ -1,5 +1,12 @@
 {% extends "search/base.html" %}
 {% block content %}
+<div>Chosen filters:</div>
+{% for label in dietLabels %}
+<div>{{label}}</div>
+{% endfor %}
+{% for label in healthLabels %}
+<div>{{label}}</div>
+{% endfor %}
 	{% for recipe in database %}
 		<h1>{{recipe }}</h1> 
 		<article class="media content-section">

@@ -1,9 +1,6 @@
 {% extends "search/base.html" %}
 {% block content %}
-	{% for recipe in database %}
-        <!--<h1>{{recipe}}</h1>-->
-        <span style="font-size: x-large;">{{recipe}}</span>
-        {% endfor %}
+        <span style="font-size: x-large;">{{errorMessage}}</span>
         <form method="GET" action="{% url 'search-results' %}">
                 <pre class="tab"> </pre>
                 <a>Do you want to try again?</a>
@@ -11,6 +8,17 @@
                 <button class="btn btn-success" type="submit">
                         Search
                 </button>
+                <pre class="tab"> </pre>
+                <input type="checkbox" id="blncd" name="blncd" value="t"> <label for="blncd">Balanced </label>
+                <input type="checkbox" id="hprot" name="hprot" value="t"> <label for="hprot">High protein </label>
+                <input type="checkbox" id="lfat" name="lfat" value="t"> <label for="lfat">Low-fat </label>
+                <input type="checkbox" id="lcarb" name="lcarb" value="t"> <label for="lcarb">Low-carb </label>
+                <input type="checkbox" id="vegan" name="vegan" value="t"> <label for="vegan">Vegan </label>
+                <input type="checkbox" id="veg" name="veg" value="t"> <label for="veg">Vegetarian </label>
+                <input type="checkbox" id="sugcon" name="sugcon" value="t"> <label for="sugcon">Sugar-conscious </label>
+                <input type="checkbox" id="pnfree" name="pnfree" value="t"> <label for="pnfree">Peanut-free </label>
+                <input type="checkbox" id="tnfree" name="tnfree" value="t"> <label for="tnfree">Tree-nut-free </label>
+                <input type="checkbox" id="alcfree" name="alcfree" value="t"> <label for="alcfree">Alcohol-free </label>
                 <pre class="tab"> </pre>
         </form>
 {% endblock content %}
