@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Recipes
 from .api_dir.api_app import Api
+from .labels_dir.label import diet_tags, health_tags
 
 
 def home(request):
@@ -12,37 +13,11 @@ def subsite(request):
 def results(request):
 	query = request.GET.get('q')
 
-	dietLabels = []
-	healthLabels = []
-	if request.GET.get('blncd'):
-		dietLabels.append('balanced')
+	dietLabels = diet_tags(request)
+	healthLabels = health_tags(request)
 
-	if request.GET.get('hprot'):
-		dietLabels.append('high-protein')
-
-	if request.GET.get('lfat'):
-		dietLabels.append('low-fat')
-
-	if request.GET.get('lcarb'):
-		dietLabels.append('low-carb')
-
-	if request.GET.get('vegan'):
-		healthLabels.append('vegan')
-
-	if request.GET.get('veg'):
-		healthLabels.append('vegetarian')
-
-	if request.GET.get('sugcon'):
-		healthLabels.append('sugar-conscious')
-
-	if request.GET.get('pnfree'):
-		healthLabels.append('peanut-free')
-
-	if request.GET.get('tnfree'):
-		healthLabels.append('tree-nut-free')
-
-	if request.GET.get('alcfree'):
-		healthLabels.append('alcohol-free')
+	#tags(request, dietLabels, healthLabels)
+	
 
 	req = Api().ret_req()
 	results = req.search_recipe(query, healthLabels, dietLabels)
