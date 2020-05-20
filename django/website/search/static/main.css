@@ -43,9 +43,13 @@ body {
     background: #ffffff;
     padding: 10px 20px;
     border: 1px solid #dddddd;
+    /*resize: none;
+    overflow: auto;*/
+    text-align: center;
+    margin: 0 auto;
     border-radius: 3px;
-    margin-right: 5px;
-    margin-bottom: 20px;
+    margin-right: auto;
+    margin-bottom: auto;
   }
   
   .article-title {
@@ -96,9 +100,9 @@ body {
     font-size: 2.5rem;
   }
 
-  /*textarea {
-    resize: none;
-    overflow: hidden;
+  /*.list-group {
+    resize: both;
+    overflow: auto;
     min-height: 50px;
     max-height: 300px;
 }*/

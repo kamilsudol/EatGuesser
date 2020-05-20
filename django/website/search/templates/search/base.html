@@ -44,12 +44,13 @@
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8">
-            {% block content %}{% endblock %}
+            {% block content %}
+             
+            {% endblock %}
           </div>
           <div class="col-md-4">
             <div class="content-section">
               <h3>Shopping list</h3>
-              <!-- Shopping List -->
               <p class='text-muted'style="text-align:center">Products you need to buy: </p>
                 <!-- <script> 
                   function auto_grow(element) {
@@ -57,14 +58,16 @@
                     element.style.height = (element.scrollHeight)+"px";
                   }
                 </script>-->
-                <!-- <ul class="list-group">
-                <select name="courses" multiple="multiple" size="30" style="height: 100%;"></select> -->
+                <ul id="products_list" class="list-group" style="list-style-type: none;">
+                <button type="button" class="btn btn-outline-primary" id="add_products" onclick="click_button(this); style.display='none'" style="color: darkblue;border-color: darkblue;">Add products</button>
+                </ul>
                 <p hidden id="counter"0></p>
                 <script>
                     function myFunction() {
                       var value = document.getElementById("counter");
                       var number = value.innerHTML;
                       number++;
+                      var node = document.createElement("LI");
                       var x = document.createElement("INPUT");
                       var y = document.createElement("INPUT");
                       x.setAttribute("type", "text");
@@ -73,8 +76,10 @@
                       x.setAttribute("onkeypress", "javascript:doit_onkeypress(event);");
                       x.setAttribute("placeholder", "New product");
                       y.setAttribute("type", "checkbox");
-                      document.body.appendChild(y);
-                      document.body.appendChild(x);
+                      node.appendChild(y);
+                      node.appendChild(x);
+                      document.getElementById("products_list").appendChild(node);
+                      //document.body.append(y);
                     }
                     
                 </script>
@@ -89,17 +94,16 @@
                               }
                           }
                       }
+                      function click_button(button){
+                                  myFunction();
+                                  var number = document.getElementById("counter").innerHTML;
+                                  document.getElementById("textbox"+(number).toString()).focus();
+                          }
                   </script>
-                <input type="checkbox"/>
-                  <input type="text" placeholder="New product" onkeypress="javascript:doit_onkeypress(event);" />
-
-
-
-
-                
+                  <!-- <input type="checkbox"/> -->
+                  <!--<input type="text" placeholder="New product" onkeypress="javascript:doit_onkeypress(event);" />-->
                   <!--<textarea oninput="auto_grow(this)"></textarea>-->
-                  <!--<textarea name="Products" cols="10" rows="20"></textarea>
-                </ul>-->
+                  <!--<textarea name="Products" cols="10" rows="20"></textarea> -->
               <!-- </p> -->
             </div>
           </div>
