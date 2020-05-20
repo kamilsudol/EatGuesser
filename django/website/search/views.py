@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Recipes
+import requests
 from .api_dir.api_app import Api
 from .labels_dir.label import diet_tags, health_tags
 
@@ -15,14 +16,11 @@ def results(request):
 
 	dietLabels = diet_tags(request)
 	healthLabels = health_tags(request)
-
-	#tags(request, dietLabels, healthLabels)
 	
-
 	req = Api().ret_req()
 	results = req.search_recipe(query, healthLabels, dietLabels)
 	context = {
-		'database': results, # Recipes.objects.all()
+		'database': results,
 		'dietLabels': dietLabels,
 		'healthLabels': healthLabels,
 	}

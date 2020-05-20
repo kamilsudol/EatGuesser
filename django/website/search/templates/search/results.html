@@ -25,11 +25,27 @@
 						{% endfor %}
 					<!--{{ recipe.cautions }}{{ recipe.dietLabels }}{{ recipe.healthLabels }}-->
 				</small>
-			  </div>
-			  <h2><a class="article-title" href={{recipe.url}}>{{ recipe.url }}</a></h2>
-			  {% for ingr in recipe.ingredient_quantities %}
-			  <p class="article-content">{{ ingr.text }}, weight: {{ingr.weight}} g</p>
-			  {% endfor %}
+				</div>
+				<h2><a class="article-title" href={{recipe.url}}>{{ recipe.url }}</a></h2>
+				<p id="products"></p>
+				{% for ingr in recipe.ingredient_quantities %}
+				<script>
+					var txt = '{{ingr.text}}';
+					var list = txt.split(" ");
+			
+					for(x in list){
+						var i=list[x];
+						if(Number(i[0]) || Number(i[1]) || i == "½" || i == "¼"){
+							document.write("<a class="+"\"article-content\" > "+i+" </a>");
+						}else{
+							document.write("<a class="+"\"article-content\" href=\"?q="+i+"\""+"> "+i+" </a>");
+						}
+						
+					}
+				</script>
+				, weight: {{ingr.weight}} g
+				<div></div>
+				{% endfor %}
 			</div>
 		  </article>
 	{% endfor %}
