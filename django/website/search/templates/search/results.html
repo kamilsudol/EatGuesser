@@ -13,7 +13,7 @@
 		<article class="media content-section">
 			<div class="media-body">
 			  <div class="article-metadata">
-				<a class="mr-2" >Calories: {{ recipe.calories }}</a>
+				<a class="mr-2" >Calories: {{ recipe.caloriesPer100 }} kcal/100g</a>
 				<small class="text-muted">Tags: {% for x in recipe.cautions %}
 						<small class="text-muted">{{x}}</small>
 						{% endfor %}

@@ -31,7 +31,7 @@ def results(request):
 	results = req.search_recipe(query, healthLabels, dietLabels)
 	if calories_sorting_order:
 		context = {
-			'database': sorted(req.search_recipe(query), key = lambda recipe: recipe.calories), # Recipes.objects.all()
+			'database': sorted(req.search_recipe(query), key = lambda recipe: recipe.caloriesPer100), # Recipes.objects.all()
 			'dietLabels': dietLabels,
 			'healthLabels': healthLabels,
 		}
