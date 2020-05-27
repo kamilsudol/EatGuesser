@@ -4,7 +4,6 @@ import logging as log
 from ..except_dir.exceptions import APIError, NotKnownQuery, InvalidKey, \
     InvalidRecipeApiKey
 import numpy as np
-from ratelimit import limits, sleep_and_retry
 
 log.basicConfig(filename='output.log', level=log.INFO,
                 format='%(message)s')
@@ -16,8 +15,6 @@ class API(object):
         self.recipes_appid = recipes_appid
         self.recipes_appkey = recipes_appkey
 
-    @sleep_and_retry
-    @limits(calls=5, period = 60)
     def search_recipe(self, query="pizza", healthLabels = [], dietLabels = []):
         health = ""
         for label in healthLabels:
@@ -37,8 +34,6 @@ class API(object):
 
 class Search(API):
 
-    @sleep_and_retry
-    @limits(calls=5, period = 60)
     def search_recipe(self, query="pizza", healthLabels = [], dietLabels = []):
         data = super().search_recipe(query, healthLabels, dietLabels)
         hits = data["hits"]

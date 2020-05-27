@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['eat-guesser.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'search.apps.SearchConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,6 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'search-home'
+LOGIN_URL = 'login'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
