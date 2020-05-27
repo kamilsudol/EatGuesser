@@ -2,7 +2,7 @@ import requests
 import json
 import logging as log
 from ..except_dir.exceptions import APIError, NotKnownQuery, InvalidKey, \
-    InvalidRecipeApiKey
+    InvalidRecipeApiKey, LimitExceeding
 import numpy as np
 
 log.basicConfig(filename='output.log', level=log.INFO,
@@ -29,14 +29,24 @@ class API(object):
         r = requests.get(url)
         if r.status_code == 401:
             raise InvalidRecipeApiKey
+        elif r.status_code == 429:
+            raise LimitExceeding
         return r.json()
 
 
 class Search(API):
 
     def search_recipe(self, query="pizza", healthLabels = [], dietLabels = []):
-        data = super().search_recipe(query, healthLabels, dietLabels)
+        try:
+            data = super().search_recipe(query, healthLabels, dietLabels)
+        except LimitExceeding:
+            yield -1
+            yield -1
         hits = data["hits"]
+        if data["count"] == 0:
+            print("test1")
+            yield -2
+            yield -2
         for hit in hits:
             data = hit["recipe"]
             data["yields"] = data["yield"]

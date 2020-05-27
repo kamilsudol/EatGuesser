@@ -22,3 +22,8 @@ class InvalidRecipeApiKey(InvalidKey):
         super().__init__()
         log.error("Specifically, the recipe API key is not valid")
 
+
+class LimitExceeding(APIError):
+    def __init__(self):
+        super().__init__()
+        log.error("You have exceeded your limit")
