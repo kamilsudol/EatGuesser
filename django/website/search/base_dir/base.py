@@ -89,7 +89,7 @@ class Recipe:
         self.uri = uri
         self.url = url or self.uri
         self.share_url = share_url or self.url
-        self.yields =yields
+        self.yields = yields
         self.cautions = cautions
         self.totalDaily = []
         self.totalDaily = totalDaily or []

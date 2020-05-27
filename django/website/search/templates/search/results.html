@@ -1,12 +1,38 @@
 {% extends "search/base.html" %}
 {% block content %}
 <div>Chosen filters: 
-{% for label in dietLabels %}
+<!-- {% for label in dietLabels %}
 {{label}}
 {% endfor %}
 {% for label in healthLabels %}
 {{label}}
-{% endfor %}</div>
+{% endfor %}-->
+<p hidden id="counter"0></p>
+<script>
+	var number = document.getElementById("counter").innerHTML;
+</script>
+
+{% for label in dietLabels %}
+	{% if label != null or label != "" %}
+	<script>
+		number++;
+	</script>
+	{{label}}
+	{% endif %}
+{% endfor %}
+
+{% for label in healthLabels %}
+	{% if label != null or label != "" %}
+		<script>
+		number++;
+		</script>
+		{{label}}
+	{% endif %}
+{% endfor %}
+<script>
+	if (number == 0){ document.write("None");}
+</script>
+</div>
 	{% for recipe in database %}
 	<pre class="tab"> </pre>
 		<h1>{{recipe }}</h1> 

@@ -1,6 +1,5 @@
 from ..base_dir.base import Search, log
 import os 
-#import numpy as np
 
 class Api:
     def ret_req(self):
@@ -22,10 +21,6 @@ class Api:
                 log.info(f"{i['text']} ,weight: {i['weight']}")
             log.info("\n")
 
-if __name__ == "__main__":
-    question = "Type the ingredient you want for recipe to include:\n"
-    query = input(question)
-    log.info(f"{question}You have chosen: {query}")
     
 
 
