@@ -56,12 +56,20 @@
 				<p id="products"></p>
 				{% for ingr in recipe.ingredient_quantities %}
 				<script>
+					var blacklist = ["½", "¼", "and", "or", "tbsp.", "lbs", "tablespoon", "large", "cut", "into", "ripe", "medium", "small", "cup", "oz", "pound", "teaspoon", "cups", "pounds", "tablespoons", "freshly", "fresh", "good", "nice", "fine", "finely", "(preferably", "preferably", "from", "a", "in", "on", "with", "and/or", "lightly", "beaten", "ground", "c.", "each", "every", "jar", "tsp.", "⅓", "(from", "jar)", "not", "lb.", "about", "to", "will", "make", "using", "do", "do)", "teaspoons", "taste", "oz.)", "(try", "as", "it", " it’s", "is", "are","avoid", "for", "health)", "health", "shortening", "ounce", "ounces", "simple", "at", "the", "thick", "of", "A", "heavy", "can", "light", "Tbsp", "-", "–", "gram", "grams", "whole", "g", "kg", "l", "ml", "fl", "tbsp", "all", "apart)"];
 					var txt = '{{ingr.text}}';
 					var list = txt.split(" ");
 			
 					for(x in list){
 						var i=list[x];
-						if(Number(i[0]) || Number(i[1]) || i == "½" || i == "¼"){
+						for(y in blacklist){
+							//document.write(blacklist[y]);
+							if(blacklist[y] == i){
+								var flag = y;
+								break;
+							}
+						}
+						if(Number(i[0]) || Number(i[1]) || blacklist[flag] == i){
 							document.write("<a class="+"\"article-content\" > "+i+" </a>");
 						}else{
 							document.write("<a class="+"\"article-content\" href=\"?q="+i+"\""+"> "+i+" </a>");

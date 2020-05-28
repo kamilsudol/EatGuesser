@@ -33,7 +33,8 @@ ALLOWED_HOSTS = ['eat-guesser.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'search.apps.SearchConfig',
-    'users.apps.UsersConfig',
+    #'users.apps.UsersConfig',
+    'users',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

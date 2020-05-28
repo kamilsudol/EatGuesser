@@ -12,4 +12,8 @@ def create_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
+<<<<<<< HEAD
     instance.profile.save()
+=======
+    instance.profile.save()
+>>>>>>> 7a3f3b372e6c30bfb5be3feb2c735d3de519caf8
