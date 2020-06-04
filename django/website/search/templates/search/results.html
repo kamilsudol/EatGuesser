@@ -85,6 +85,12 @@
 					<img src="{{ recipe.image }}" alt="{{ recipe }}">
 				</div>
 				<pre class="tab"> </pre>
+				<form action="" method="POST">
+					{% csrf_token %}
+					<input type="text" name="title"/></br>
+					<textarea cols="30" rows="10" name="description"></textarea></br>
+					<input type="submit" value="Add to favourites"/>
+				</form>
 			</div>
 		  </article>
 	{% endfor %}
