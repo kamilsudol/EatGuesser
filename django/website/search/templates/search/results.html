@@ -43,7 +43,6 @@
 						{% for x in recipe.healthLabels %}
 						<small class="text-muted">{{x}}</small>
 						{% endfor %}
-					<!--{{ recipe.cautions }}{{ recipe.dietLabels }}{{ recipe.healthLabels }}-->
 				</small>
 				</div>
 				<h2><a class="article-title" href={{recipe.url}}>{{ recipe.url }}</a></h2>
@@ -57,7 +56,6 @@
 					for(x in list){
 						var i=list[x];
 						for(y in blacklist){
-							//document.write(blacklist[y]);
 							if(blacklist[y] == i){
 								var flag = y;
 								break;
