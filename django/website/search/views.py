@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from .models import Recipes
 import requests
+import json
 from .api_dir.api_app import Api
 from .labels_dir.label import diet_tags, health_tags
 from .except_dir.exceptions import APIError, NotKnownQuery, InvalidKey, \
     InvalidRecipeApiKey, LimitExceeding
 
 
-def home(request):
-	return render(request, 'search/home.html', {'title': 'Home'})
+def home(request):	
+	file = open("staticfiles/hint_products.json", "r").read()
+	data = json.loads(file)
+	return render(request, 'search/home.html', {'title': 'Home', 'jsonData': data})
 
 def subsite(request):
 	return render(request, 'search/subsite.html', {'title': 'Subsite'})
