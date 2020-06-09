@@ -30,7 +30,8 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{% url 'search-home' %}">Home</a>
-                <a class="nav-item nav-link" href="{% url 'search-subsite' %}">Subsite</a>
+                <a class="nav-item nav-link" href="{% url 'search-subsite' %}">Your shopping list</a>
+                <a class="nav-item nav-link" href="{% url 'search-likedrecipes' %}">Favourite recipes</a>
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
@@ -96,6 +97,7 @@
                     
                 </script>
                   <script type="text/javascript">
+                      var shoplist = "";
                       function doit_onkeypress(event){
                           if (event.keyCode == 13 || event.which == 13){
                             if(document.getElementById("counter").innerHTML < 50)
@@ -103,6 +105,9 @@
                                   myFunction();
                                   var number = document.getElementById("counter").innerHTML;
                                   document.getElementById("textbox"+(number).toString()).focus();
+
+                                  shoplist = shoplist + document.getElementById("textbox"+(number-1).toString()).value + " ";
+                                  document.getElementById("shoplist").value=shoplist;
                               }
                           }
                       }
@@ -112,6 +117,11 @@
                                   document.getElementById("textbox"+(number).toString()).focus();
                           }
                   </script>
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="ingredients" id="shoplist"/>
+                      <input type="submit" value="Apply changes."/>
+                    </form>
                   <!-- <input type="checkbox"/> -->
                   <!--<input type="text" placeholder="New product" onkeypress="javascript:doit_onkeypress(event);" />-->
                   <!--<textarea oninput="auto_grow(this)"></textarea>-->

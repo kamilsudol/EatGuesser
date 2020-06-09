@@ -1,7 +1,6 @@
 {% extends "search/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<p><h4>Products, which you have to buy</h4></p>
 {% for i in data%}
     <div class="content-section">
     	<form method="POST">
@@ -9,9 +8,10 @@
         </form>
         
     	<div >
-               
+               <!-- {{recipe_data|crispy}}-->
+               <p><h4>{{i.title}}</h4></p>
                <div>
-                {{i.ingredients}}
+                {{i.description}}
                </div>
                
         </div>

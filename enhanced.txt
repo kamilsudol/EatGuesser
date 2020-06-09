@@ -45,10 +45,10 @@ receive the most appropriate list of available recipes.
 ---------------------------------------------------------------------------------------------------------------------------
 Week 4 - 5:
 
-- creating working user interface on our website (Week 4-5),
+- creating working user interface on our website (DONE),
 - making it possible for user to create an account (DONE),
-- creating a list of favourite recipes (Week 5),
-- saving a shopping list on the user’s profile (Week 5).
+- creating a list of favourite recipes (DONE),
+- saving a shopping list on the user’s profile (DONE).
 
 At this stage user will be able to create a new account, sign in and add recipes to his list of favourites. User will have access 
 to his shopping list, where he will be able to check what groceries he yet needs.

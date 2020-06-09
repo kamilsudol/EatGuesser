@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.home, name='search-home'),
     path('results/', views.results, name='search-results'),
     path('subsite/', views.subsite, name='search-subsite'),
+    path('liked_recipes/', views.liked_recipes, name='search-likedrecipes'),
 ]
 
 
