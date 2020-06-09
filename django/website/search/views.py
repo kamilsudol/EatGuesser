@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Recipes, LikedRecipes, ShoppingList
 import requests
 import json
+import os
 from .api_dir.api_app import Api
 from .labels_dir.label import diet_tags, health_tags
 from .except_dir.exceptions import APIError, NotKnownQuery, InvalidKey, \
@@ -111,9 +112,11 @@ def subsite(request):
 	ret_shopp = subsite2(request)
 	if(ret_shopp):
 		return ret_shopp
+	map_box = os.environ.get('MAP_KEY')
 	data = ShoppingList.objects.all()
 	context = {
-		'data':data
+		'data':data,
+		'token':map_box
 	}
 
 	return render(request,'search/subsite.html', context)
