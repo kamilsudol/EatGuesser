@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{% url 'search-home' %}">Home</a>
-                <a class="nav-item nav-link" href="{% url 'search-subsite' %}">Subsite</a>
+                <a class="nav-item nav-link" href="{% url 'search-subsite' %}">Your shopping list</a>
                 <a class="nav-item nav-link" href="{% url 'search-likedrecipes' %}">Favourite recipes</a>
               </div>
               <!-- Navbar Right Side -->
@@ -77,15 +77,15 @@
                 <p hidden id="counter"0></p>
                 <script>
                     function myFunction() {
-                      var value = document.getElementById("counter");
-                      var number = value.innerHTML;
+                      var valu = document.getElementById("counter");
+                      var number = valu.innerHTML;
                       number++;
                       var node = document.createElement("LI");
-                      var x = document.createElement("INPUT");
+                      var x = document.createElement("input");
                       var y = document.createElement("INPUT");
                       x.setAttribute("type", "text");
                       x.setAttribute("id", "textbox" + number.toString());
-                      value.innerHTML = number;
+                      valu.innerHTML = number;
                       x.setAttribute("onkeypress", "javascript:doit_onkeypress(event);");
                       x.setAttribute("placeholder", "New product");
                       y.setAttribute("type", "checkbox");
@@ -97,13 +97,18 @@
                     
                 </script>
                   <script type="text/javascript">
+                      var shoplist = "";
                       function doit_onkeypress(event){
                           if (event.keyCode == 13 || event.which == 13){
-                            if(document.getElementById("counter").innerHTML < 50)
+                            if(document.getElementById("counter").innerHTML < 11)
                               {
                                   myFunction();
                                   var number = document.getElementById("counter").innerHTML;
                                   document.getElementById("textbox"+(number).toString()).focus();
+                                  
+                                  shoplist = shoplist + document.getElementById("textbox"+(number-1).toString()).value + " ";
+                                  document.getElementById("shoplist").value=shoplist;
+                                  
                               }
                           }
                       }
@@ -111,8 +116,15 @@
                                   myFunction();
                                   var number = document.getElementById("counter").innerHTML;
                                   document.getElementById("textbox"+(number).toString()).focus();
+                                  
                           }
                   </script>
+                  <form action="" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="ingredients" id="shoplist"/>
+                      <input type="submit" value="Apply changes."/>
+                    </form>
+                  
                   <!-- <input type="checkbox"/> -->
                   <!--<input type="text" placeholder="New product" onkeypress="javascript:doit_onkeypress(event);" />-->
                   <!--<textarea oninput="auto_grow(this)"></textarea>-->

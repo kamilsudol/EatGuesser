@@ -87,10 +87,18 @@
 				<pre class="tab"> </pre>
 				<form action="" method="POST">
 					{% csrf_token %}
-					<input type="text" name="title"/></br>
-					<textarea cols="30" rows="10" name="description"></textarea></br>
+					<input type="hidden" name="title" value="{{recipe}}"/>
+					
+					<!--<input type="hidden" name="description" value="{{recipe.ingredient_quantities.text}}"/>-->
+					<input type="hidden" name="description" id="list"/>
 					<input type="submit" value="Add to favourites"/>
 				</form>
+				{% for ingr in recipe.ingredient_quantities %}
+					<script type="text/javascript">
+						var list = list + '{{ingr.text}}' + ', weight: ' + '{{ingr.weight}} ' + 'g. ';
+						document.getElementById("list").value = list;
+					</script>
+				{% endfor %}
 			</div>
 		  </article>
 	{% endfor %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Recipes, LikedRecipes
+from .models import Recipes, LikedRecipes, ShoppingList
 import requests
 from .api_dir.api_app import Api
 from .labels_dir.label import diet_tags, health_tags
@@ -8,10 +8,19 @@ from .except_dir.exceptions import APIError, NotKnownQuery, InvalidKey, \
 
 
 def home(request):
+	ret_shopp = subsite2(request)
+	if(ret_shopp):
+		return ret_shopp
 	return render(request, 'search/home.html', {'title': 'Home'})
 
-def subsite(request):
-	return render(request, 'search/subsite.html', {'title': 'Subsite'})
+def subsite2(request):
+	if request.method == 'POST':
+		if request.POST.get('ingredients'):
+			new_ing = ShoppingList()
+			new_ing.ingredients = request.POST.get('ingredients')
+			new_ing.save()
+
+			return render(request, 'search/err.html', {'errorMessage': 'Shopping list has been updated successfully!'})
 
 def results(request):
 	'''
@@ -23,6 +32,10 @@ def results(request):
 			calories_sorting_order = False
 	'''
 
+	ret_shopp = subsite2(request)
+	if(ret_shopp):
+		return ret_shopp
+
 	if request.method == 'POST':
 		if request.POST.get('title') and request.POST.get('description'):
 			new_fav = LikedRecipes()
@@ -30,7 +43,7 @@ def results(request):
 			new_fav.description = request.POST.get('description')
 			new_fav.save()
 
-			return render(request,'search/liked_recipes.html')
+			return render(request, 'search/err.html', {'errorMessage': 'Recipe has been added successfully!'})
 
 	else:
 		calories_sorting_order = request.GET.get('sort')
@@ -77,6 +90,9 @@ def results(request):
 		return render(request, 'search/results.html', context)
 	
 def liked_recipes(request):
+	ret_shopp = subsite2(request)
+	if(ret_shopp):
+		return ret_shopp
 	#data = RecipesUpdate(instance=request.user)
 	data = LikedRecipes.objects.all()
 	context = {
@@ -87,5 +103,14 @@ def liked_recipes(request):
 
 	return render(request,'search/liked_recipes.html', context)
 
-#def create_fav(request):
+def subsite(request):
+	ret_shopp = subsite2(request)
+	if(ret_shopp):
+		return ret_shopp
+	data = ShoppingList.objects.all()
+	context = {
+		'data':data
+	}
+
+	return render(request,'search/subsite.html', context)
 	
