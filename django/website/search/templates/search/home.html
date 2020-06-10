@@ -6,10 +6,9 @@
 <form style="text-align: center;" method="GET" action="{% url 'search-results' %}">
 	<h2>Welcome to EatGuesser!</h2>
 	<pre class="tab"> </pre>
-	<input name="q" id="search_bar" value="{{request.GET.q}}" placeholder="Type your products..." onkeyup="display('search_bar')">
-	
+	<input name="q" id="search_bar" value="{{request.GET.q}}" placeholder="Type your products..." onkeyup="display('search_bar')"/>
+	<style>#search_bar {position: static;}</style>
 		<script>
-
 		var dict = {};
 		var dict = JSON.parse(document.getElementById('jsonData_name').textContent);
 
@@ -34,18 +33,32 @@
 			var value = getValue(target);
 			if(value === undefined)
 			{
-				document.getElementById("demo").innerHTML = "";
+				
+				document.getElementById("demo").innerHTML = " ";
 			}
 			else
 			{
+				
 				document.getElementById("demo").innerHTML = value;
 			}
 		}
 	</script>
-	<button class="btn btn-success" type="submit">
+	<button class="btn btn-success" id="search-button" type="submit">
 		Search
-	</button>
-	<small name="demo" id="demo"></small>
+	</button><br></p>
+	<h3 style="font-size:20px"name="hints" id="hints"><style>#hints{position: absolute; left: 100px; }</style>Suggested product:</h3>
+	<div class="demo" id="demo"></div>
+	<style>
+	#demo{
+		/* text-align: None;  */
+		vertical-align: baseline;
+		font-size: 20px;
+		left: 280px; 
+		top: 135px;
+		position: absolute;
+		color: #28a745;
+	}
+	</style><br>
 	<pre class="tab"> </pre>
 	<input type="checkbox" id="sort" name="sort"  value="t"> <label for="sort">Sort by calories </label>
 	<input type="checkbox" id="blncd" name="blncd" value="t"> <label for="blncd">Balanced </label>

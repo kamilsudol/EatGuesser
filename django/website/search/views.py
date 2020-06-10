@@ -18,16 +18,21 @@ def home(request):
 	return render(request, 'search/home.html', {'title': 'Home', 'jsonData': data})
 	#return render(request, 'search/home.html', {'title': 'Home'})
 
+
 def subsite2(request):
+	file = open("staticfiles/hint_products.json", "r").read()
+	data = json.loads(file)
 	if request.method == 'POST':
 		if request.POST.get('ingredients'):
 			new_ing = ShoppingList()
 			new_ing.ingredients = request.POST.get('ingredients')
 			new_ing.save()
 
-			return render(request, 'search/err.html', {'errorMessage': 'Shopping list has been updated successfully!'})
+			return render(request, 'search/err.html', {'errorMessage': 'Shopping list has been updated successfully!', 'jsonData': data})
 
 def results(request):
+	file = open("staticfiles/hint_products.json", "r").read()
+	data = json.loads(file)
 	'''
 	def flip_order(request):
 		calories_sorting_order = request.GET.get('sort')
@@ -48,9 +53,10 @@ def results(request):
 			new_fav.description = request.POST.get('description')
 			new_fav.save()
 
-			return render(request, 'search/err.html', {'errorMessage': 'Recipe has been added successfully!'})
+			return render(request, 'search/err.html', {'errorMessage': 'Recipe has been added successfully!', 'jsonData': data})
 
 	else:
+		
 		calories_sorting_order = request.GET.get('sort')
 
 		query = request.GET.get('q')
@@ -75,21 +81,23 @@ def results(request):
 				message += label + ', '
 			print("brak wyników wyszukiwania")
 			if not flag2:
-				return render(request, 'search/err.html', {'errorMessage': message})
+				return render(request, 'search/err.html', {'errorMessage': message, 'jsonData': data})
 			else:
-				return render(request, 'search/err.html', {'errorMessage': message + "None"})
+				return render(request, 'search/err.html', {'errorMessage': message + "None", 'jsonData': data})
 
 		if calories_sorting_order:
 			context = {
 				'database': sorted(req.search_recipe(query), key = lambda recipe: recipe.caloriesPer100), # Recipes.objects.all()
 				'dietLabels': dietLabels,
 				'healthLabels': healthLabels,
+				'jsonData': data
 			}
 		else:
 			context = {
 				'database': results, # Recipes.objects.all()
 				'dietLabels': dietLabels,
 				'healthLabels': healthLabels,
+				'jsonData': data
 			}
 		
 		return render(request, 'search/results.html', context)
