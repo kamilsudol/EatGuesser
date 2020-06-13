@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="366" height="311.8" viewBox="0 0 366 311.8">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #38aa31;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Triangle" transform="translate(-162.503)">
+    <path id="Path_2" data-name="Path 2" class="cls-1" d="M163,0V311.8H469.238Z"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" class="cls-2" width="364" height="15" transform="translate(162.503 273.233)"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" class="cls-2" width="364" height="15" transform="translate(162.503 230.139)"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" class="cls-2" width="366" height="15" transform="translate(162.503 106.871)"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" class="cls-2" width="364" height="15" transform="translate(162.503 174.017)"/>
+  </g>
+</svg>

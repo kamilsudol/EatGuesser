@@ -1,37 +1,39 @@
 {% extends "search/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<p><h4>Products to buy:</h4></p>
+<p>
+    <h4>
+        Products to buy:
+    </h4>
+</p>
 {% for i in data%}
     <div class="content-section">
     	<form method="POST">
     		{% csrf_token %}
         </form>
-        
     	<div >
-               
-               <div>
+            <div>
                 {{i.ingredients}}
-               </div>
-               
+            </div>
         </div>
-       
     </div>
-    {% endfor %}
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
-    <p></p>
-    <center>
-        <div id='map' style='width: 700px; height: 300px;'></div>
-        <script>
-            mapboxgl.accessToken = '{{token}}';
-            var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-77.03, 38.91],
-            zoom: 9
-            });
-        </script>
-    </center>
+{% endfor %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'>
+</script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+<p>
+</p>
+<center>
+    <div id='map' style='width: 700px; height: 300px;'></div>
+    <script>
+        mapboxgl.accessToken = '{{token}}';
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-77.03, 38.91],
+        zoom: 9
+        });
+    </script>
+</center>
     
 {% endblock content %}
