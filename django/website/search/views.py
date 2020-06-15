@@ -122,9 +122,18 @@ def subsite(request):
 		return ret_shopp
 	map_box = os.environ.get('MAP_KEY')
 	data = ShoppingList.objects.all()
+	location = requests.get('https://ipinfo.io/')
+	location_data = location.json()
+	loc = location_data['loc']
+	cords = loc.split(",")
+	#print(cords)
+	#shops_data = requests.get('https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/tilequery/'+cords[1]+','+cords[0]+'.json?radius=1000&limit=50&dedupe&access_token=' + map_box)
+	#print(shops_data.json())
 	context = {
 		'data':data,
-		'token':map_box
+		'token':map_box,
+		'loc_data': loc,
+	#	'shops': shops_data.json()
 	}
 
 	return render(request,'search/subsite.html', context)

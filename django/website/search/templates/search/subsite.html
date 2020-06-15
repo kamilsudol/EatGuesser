@@ -25,12 +25,60 @@
         <div id='map' style='width: 700px; height: 300px;'></div>
         <script>
             mapboxgl.accessToken = '{{token}}';
+            var txt = '{{loc_data}}';
+            var cords = txt.split(",");
+            var stores = '{{shops}}';
             var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-77.03, 38.91],
-            zoom: 9
+            center: [Number(cords[1]), Number(cords[0])],
+            zoom: 15
             });
+            /*
+            map.on('load', function (e) {
+                // Add the data to your map as a layer 
+                map.addLayer({
+                    "id": "locations",
+                    "type": "symbol",
+                    // Add a GeoJSON source containing place coordinates and information. 
+                    "source": {
+                    "type": "geojson",
+                    "data": stores
+                    },
+                    "layout": {
+                    "icon-image": "restaurant-15",
+                    "icon-allow-overlap": true,
+                    }
+                });
+                });
+            */
+
+            /*
+            map.on('load', function() {
+                // add source and layer for museums
+                map.addSource('museums', {
+                type: 'vector',
+                url: 'mapbox://mapbox.2opop9hr'
+                });
+                map.addLayer({
+                'id': 'museums',
+                'type': 'circle',
+                'source': 'museums',
+                'layout': {
+                // make layer visible by default
+                'visibility': 'visible'
+                },
+                'paint': {
+                'circle-radius': 8,
+                'circle-color': 'rgba(55,148,179,1)'
+                },
+                'source-layer': 'museum-cusco'
+                });
+            });
+            */
+
+            
+            
         </script>
     </center>
     
