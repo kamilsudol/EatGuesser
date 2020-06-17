@@ -16,7 +16,7 @@ def home(request):
 	file = open("staticfiles/hint_products.json", "r").read()
 	data = json.loads(file)
 	return render(request, 'search/home.html', {'title': 'Home', 'jsonData': data})
-	#return render(request, 'search/home.html', {'title': 'Home'})
+
 
 
 def subsite2(request):
@@ -33,14 +33,6 @@ def subsite2(request):
 def results(request):
 	file = open("staticfiles/hint_products.json", "r").read()
 	data = json.loads(file)
-	'''
-	def flip_order(request):
-		calories_sorting_order = request.GET.get('sort')
-		if calories_sorting_order is False:
-			calories_sorting_order = True
-		else:
-			calories_sorting_order = False
-	'''
 
 	ret_shopp = subsite2(request)
 	if(ret_shopp):
@@ -87,14 +79,14 @@ def results(request):
 
 		if calories_sorting_order:
 			context = {
-				'database': sorted(req.search_recipe(query), key = lambda recipe: recipe.caloriesPer100), # Recipes.objects.all()
+				'database': sorted(req.search_recipe(query), key = lambda recipe: recipe.caloriesPer100),
 				'dietLabels': dietLabels,
 				'healthLabels': healthLabels,
 				'jsonData': data
 			}
 		else:
 			context = {
-				'database': results, # Recipes.objects.all()
+				'database': results,
 				'dietLabels': dietLabels,
 				'healthLabels': healthLabels,
 				'jsonData': data
@@ -106,11 +98,9 @@ def liked_recipes(request):
 	ret_shopp = subsite2(request)
 	if(ret_shopp):
 		return ret_shopp
-	#data = RecipesUpdate(instance=request.user)
 	data = LikedRecipes.objects.all()
 	context = {
-		#'title':data.title,
-		#'description':data.description
+
 		'data':data
 	}
 
@@ -121,10 +111,16 @@ def subsite(request):
 	if(ret_shopp):
 		return ret_shopp
 	map_box = os.environ.get('MAP_KEY')
-	data = ShoppingList.objects.all()
+	data = ShoppingList.objects.last()
+	location = requests.get('https://ipinfo.io/')
+	location_data = location.json()
+	loc = location_data['loc']
+	#cords = loc.split(",")
+
 	context = {
 		'data':data,
-		'token':map_box
+		'token':map_box,
+		'loc_data': loc
 	}
 
 	return render(request,'search/subsite.html', context)

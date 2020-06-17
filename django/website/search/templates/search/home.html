@@ -3,108 +3,77 @@
 
 {{ jsonData|json_script:"jsonData_name" }} 
 
-<form id="f" style="text-align: center; padding-top: 5em;" method="GET" action="{% url 'search-results'%}">
-	<div class="column">
-		<h2>EatGuesser is a simple app, that allows you to find the most appropriate kitchen recipe
-			based on the groceries you possess.<br>
-			It may be accomplished by manually typing in the name of a product.
-		</h2>
-		<section>
-			<h1>EatGuesser</h1>
-		</section>
-		<div class="blank">
-		</div>
-		<input class="q" name="q" id="search_bar" value="" placeholder="Type your products..." onkeyup="display('search_bar')">
+<form style="text-align: center;" method="GET" action="{% url 'search-results' %}">
+	<h2>Welcome to EatGuesser!</h2>
+	<pre class="tab"> </pre>
+	<input name="q" id="search_bar" value="{{request.GET.q}}" placeholder="Type your products..." onkeyup="display('search_bar')"/>
+	<style>#search_bar {position: static;}</style>
 		<script>
+		var dict = {};
+		var dict = JSON.parse(document.getElementById('jsonData_name').textContent);
 
-			var dict = {};
-			var dict = JSON.parse(document.getElementById('jsonData_name').textContent);
+		function getValue(myKey)
+		{
+			return dict[myKey];
+		};
 
-			function getValue(myKey)
+		function display(id)
+		{
+			var counter = 0;
+			lista = document.getElementById(id).value.split(" ");
+			for (word in lista)
 			{
-				return dict[myKey];
-			};
-
-			function display(id)
-			{
-				var counter = 0;
-				lista = document.getElementById(id).value.split(" ");
-				for (word in lista)
-				{
-					counter += 1;
-				}
-				var target = lista[counter-1];
-				if(target === "" || target === " ")
-				{
-					target = lista[counter-2];
-				}
-				var value = getValue(target);
-				if(value === undefined)
-				{
-					document.getElementById("demo").innerHTML = "";
-				}
-				else
-				{
-					document.getElementById("demo").innerHTML = value;
-				}
+				counter += 1;
 			}
-		</script>
-		<button class="btn btn-success" type="submit">
-			Search
-		</button>
-		<h3 class="hints" sname="hints" id="hints">
-			Suggested product:
-		</h3>
-		<div class="demo" id="demo">
-		</div>
-		<pre class="tab">
-		</pre>
-		<div class="row" method="GET" action="{% url 'search-results' %}">
-			<label class="container" for="blncd">Balanced 
-				<input type="checkbox" id="blncd" name="blncd" value="t">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container" for="hprot">High protein 
-				<input type="checkbox" id="hprot" name="hprot" value="t">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container" for="lfat">Low-fat 
-				<input type="checkbox" id="lfat" name="lfat" value="t">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container" for="lcarb">Low-carb
-				<input type="checkbox" id="lcarb" name="lcarb" value="t">
-				<span class="checkmark"></span>
-			</label>
-		</div>
-		<div class="row">
-			<label class="container" for="sugcon">Sugar-consious
-				<input type="checkbox" id="sugcon" name="sugcon" value="t">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container" for="veg">Vegetarian
-				<input type="checkbox" id="veg" name="veg" value="t">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container" for="vegan">Vegan
-				<input type="checkbox" id="vegan" name="vegan" value="t">
-				<span class="checkmark"></span>
-			</label>
-		</div>
-		<div class="row">
-			<label class="container" for="pnfree">Peanut-free 
-				<input type="checkbox" id="pnfree" name="pnfree" value="t">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container" for="tnfree">Tree-nut-free 
-				<input type="checkbox" id="tnfree" name="tnfree" value="t">
-				<span class="checkmark"></span>
-			</label>
-			<label class="container" for="alcfree">Alcohol-free 
-				<input type="checkbox" id="alcfree" name="alcfree" value="t">
-				<span class="checkmark"></span>
-			</label>
-		</div>
-	</div>
+			var target = lista[counter-1];
+			if(target === "" || target === " ")
+			{
+				target = lista[counter-2];
+			}
+			var value = getValue(target);
+			if(value === undefined)
+			{
+				
+				document.getElementById("demo").innerHTML = " ";
+			}
+			else
+			{
+				
+				document.getElementById("demo").innerHTML = value;
+			}
+		}
+	</script>
+	<button class="btn btn-success" id="search-button" type="submit">
+		Search
+	</button><br></p>
+	<h3 style="font-size:20px"name="hints" id="hints"><style>#hints{position: absolute; left: 100px; }</style>Suggested product:</h3>
+	<div class="demo" id="demo"></div>
+	<style>
+	#demo{
+		/* text-align: None;  */
+		vertical-align: baseline;
+		font-size: 20px;
+		left: 280px; 
+		top: 135px;
+		position: absolute;
+		color: #28a745;
+	}
+	</style><br>
+	<pre class="tab"> </pre>
+	<input type="checkbox" id="sort" name="sort"  value="t"> <label for="sort">Sort by calories </label>
+	<input type="checkbox" id="blncd" name="blncd" value="t"> <label for="blncd">Balanced </label>
+	<input type="checkbox" id="hprot" name="hprot" value="t"> <label for="hprot">High protein </label>
+	<input type="checkbox" id="lfat" name="lfat"  value="t"> <label for="lfat">Low-fat </label>
+	<input type="checkbox" id="lcarb" name="lcarb"  value="t"> <label for="lcarb">Low-carb </label>
+	<input type="checkbox" id="vegan" name="vegan"  value="t"> <label for="vegan">Vegan </label>
+	<input type="checkbox" id="veg" name="veg"  value="t"> <label for="veg">Vegetarian </label>
+	<input type="checkbox" id="sugcon" name="sugcon"  value="t"> <label for="sugcon">Sugar-conscious </label>
+	<input type="checkbox" id="pnfree" name="pnfree"  value="t"> <label for="pnfree">Peanut-free </label>
+	<input type="checkbox" id="tnfree" name="tnfree"  value="t"> <label for="tnfree">Tree-nut-free </label>
+	<input type="checkbox" id="alcfree" name="alcfree"  value="t"> <label for="alcfree">Alcohol-free </label>
+	<pre class="tab"> </pre>
+	<h4>What is EatGuesser?</h4>
+	<pre class="tab"> </pre>
+	<div>EatGuesser is a simple app that allows you to find the most appropriate kitchen recipe on the basis of the groceries you possess. It may be accomplished by manual typing each name of the product.</div>
 </form>
 {% endblock content %}

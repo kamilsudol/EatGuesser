@@ -1,39 +1,39 @@
 {% extends "search/base.html" %}
 {% block content %}
-	<div class="filters">Chosen filters: 
-		<p hidden id="counter"0></p>
-		<script>
-			var number = document.getElementById("counter").innerHTML;
-		</script>
+<div>Chosen filters: 
+<p hidden id="counter"0></p>
+<script>
+	var number = document.getElementById("counter").innerHTML;
+</script>
 
-		{% for label in dietLabels %}
-			{% if label != null or label != "" %}
-			<script>
-				number++;
-			</script>
-			{{label}},
-			{% endif %}
-		{% endfor %}
+{% for label in dietLabels %}
+	{% if label != null or label != "" %}
+	<script>
+		number++;
+	</script>
+	{{label}}
+	{% endif %}
+{% endfor %}
 
-		{% for label in healthLabels %}
-			{% if label != null or label != "" %}
-				<script>
-				number++;
-				</script>
-				{{label}},
-			{% endif %}
-		{% endfor %}
+{% for label in healthLabels %}
+	{% if label != null or label != "" %}
 		<script>
-			if (number == 0){ document.write("None");}
+		number++;
 		</script>
-	</div>
+		{{label}}
+	{% endif %}
+{% endfor %}
+<script>
+	if (number == 0){ document.write("None");}
+</script>
+</div>
 	{% for recipe in database %}
 	<pre class="tab"> </pre>
-		<h3><a class="article-title" href={{recipe.url}}>{{ recipe }}</a></h3>
-		<article id="f" class="media content-section">
+		<h1>{{recipe }}</h1> 
+		<article class="media content-section">
 			<div class="media-body">
 			  <div class="article-metadata">
-				<a class="calories">Calories: {{ recipe.caloriesPer100 }} kcal/100g</a>
+				<a class="mr-2" >Calories: {{ recipe.caloriesPer100 }} kcal/100g</a>
 				<small class="text-muted">Tags: {% for x in recipe.cautions %}
 						<small class="text-muted">{{x}}</small>
 						{% endfor %}
@@ -45,10 +45,11 @@
 						{% endfor %}
 				</small>
 				</div>
+				<h2><a class="article-title" href={{recipe.url}}>{{ recipe.url }}</a></h2>
 				<p id="products"></p>
 				{% for ingr in recipe.ingredient_quantities %}
 				<script>
-					var blacklist = ["½", "¼", "and", "inch", "ounce", "boneless", "chopped", "minced", "or", "oz.", "sliced", "pack", "tbsp.", "lbs", "tablespoon", "large", "cut", "into", "handful", "ripe", "medium", "small", "cup", "oz", "pound", "teaspoon", "cups", "pounds", "tablespoons", "freshly", "fresh", "good", "nice", "fine", "finely", "(preferably", "preferably", "from", "a", "in", "on", "with", "and/or", "lightly", "beaten", "ground", "c.", "each", "every", "jar", "tsp.", "⅓", "(from", "jar)", "not", "lb.", "about", "to", "will", "make", "using", "do", "do)", "teaspoons", "taste", "oz.)", "(try", "as", "it", " it’s", "is", "are","avoid", "for", "health)", "health", "shortening", "ounce", "ounces", "simple", "at", "the", "thick", "of", "A", "heavy", "can", "light", "Tbsp", "-", "–", "gram", "grams", "whole", "g", "kg", "l", "ml", "fl", "tbsp", "all", "apart)"];
+					var blacklist = ["½", "¼", "and", "or", "tbsp.", "lbs", "tablespoon", "large", "cut", "into", "ripe", "medium", "small", "cup", "oz", "pound", "teaspoon", "cups", "pounds", "tablespoons", "freshly", "fresh", "good", "nice", "fine", "finely", "(preferably", "preferably", "from", "a", "in", "on", "with", "and/or", "lightly", "beaten", "ground", "c.", "each", "every", "jar", "tsp.", "⅓", "(from", "jar)", "not", "lb.", "about", "to", "will", "make", "using", "do", "do)", "teaspoons", "taste", "oz.)", "(try", "as", "it", " it’s", "is", "are","avoid", "for", "health)", "health", "shortening", "ounce", "ounces", "simple", "at", "the", "thick", "of", "A", "heavy", "can", "light", "Tbsp", "-", "–", "gram", "grams", "whole", "g", "kg", "l", "ml", "fl", "tbsp", "all", "apart)"];
 					var txt = '{{ingr.text}}';
 					var list = txt.split(" ");
 			
@@ -63,7 +64,7 @@
 						if(Number(i[0]) || Number(i[1]) || blacklist[flag] == i){
 							document.write("<a class="+"\"article-content\" > "+i+" </a>");
 						}else{
-							document.write("<a class="+"\"article-content-ref\" href=\"?q="+i+"\""+"> "+i+" </a>");
+							document.write("<a class="+"\"article-content\" href=\"?q="+i+"\""+"> "+i+" </a>");
 						}
 						
 					}
@@ -76,13 +77,13 @@
 					<img src="{{ recipe.image }}" alt="{{ recipe }}">
 				</div>
 				<pre class="tab"> </pre>
-				<form class="favorites-form" action="" method="POST">
+				<form action="" method="POST">
 					{% csrf_token %}
 					<input type="hidden" name="title" value="{{recipe}}"/>
 					
 					<!--<input type="hidden" name="description" value="{{recipe.ingredient_quantities.text}}"/>-->
 					<input type="hidden" name="description" id="list"/>
-					<input class="favorites-btn btn-success" type="submit" value="Add to favourites"/>
+					<input type="submit" value="Add to favourites"/>
 				</form>
 				{% for ingr in recipe.ingredient_quantities %}
 					<script type="text/javascript">

@@ -1,39 +1,58 @@
 {% extends "search/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<p>
-    <h4>
-        Products to buy:
-    </h4>
-</p>
-{% for i in data%}
+<p><h4>Products to buy:</h4></p>
+
     <div class="content-section">
     	<form method="POST">
     		{% csrf_token %}
         </form>
+        
     	<div >
-            <div>
-                {{i.ingredients}}
-            </div>
+               
+               <div>
+                {{data.ingredients}}
+               </div>
+               
         </div>
+       
     </div>
-{% endfor %}
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'>
-</script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
-<p>
-</p>
-<center>
-    <div id='map' style='width: 700px; height: 300px;'></div>
-    <script>
-        mapboxgl.accessToken = '{{token}}';
-        var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-77.03, 38.91],
-        zoom: 9
-        });
-    </script>
-</center>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+    <p></p>
+    <center>
+        <div id='map' style='width: 700px; height: 300px;'></div>
+        <script>
+            mapboxgl.accessToken = '{{token}}';
+            var txt = '{{loc_data}}';
+            var cords = txt.split(",");
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [Number(cords[1]), Number(cords[0])],
+            zoom: 15
+            });
+  
+
+           map.on('load', function (e) {
+            map.addLayer({
+                "id": "locations",
+                "type": "symbol",
+                "source": {
+                "type": "geojson",
+                "data": "https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/tilequery/"+cords[1]+","+cords[0]+".json?radius=1000&limit=50&dedupe&access_token="+mapboxgl.accessToken
+                },
+                "layout": {
+                "icon-image": "marker-15",
+                "icon-allow-overlap": true,
+                }
+            });
+            });
+
+            
+            
+        </script>
+    </center>
     
 {% endblock content %}
