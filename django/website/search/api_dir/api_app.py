@@ -20,9 +20,3 @@ class Api:
             for i in recipe.ingredient_quantities:
                 log.info(f"{i['text']} ,weight: {i['weight']}")
             log.info("\n")
-
-    
-
-
-
-

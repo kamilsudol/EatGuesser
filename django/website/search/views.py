@@ -115,7 +115,6 @@ def subsite(request):
 	location = requests.get('https://ipinfo.io/')
 	location_data = location.json()
 	loc = location_data['loc']
-	#cords = loc.split(",")
 
 	context = {
 		'data':data,

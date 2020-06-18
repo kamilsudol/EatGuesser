@@ -55,8 +55,6 @@ def prepare_input(text):
             pass
     return x
 
-
-
 # wybranie najlepszych slow na podstawie probki
 def sample(preds, top_n=3):
     preds = np.asarray(preds).astype('float64')

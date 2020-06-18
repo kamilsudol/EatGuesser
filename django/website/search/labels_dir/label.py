@@ -1,4 +1,3 @@
-
 def diet_tags(request):
     dietLabels = []
 
