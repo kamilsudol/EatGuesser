@@ -105,13 +105,23 @@ h3 {
   float: left;
   bottom: 0;
   left: 0;
-  width: 15%;
+  width: 12%;
+  z-index: -1;
 }
 
 .hide-triangle {
   position: absolute;
-  opacity: 0;
   bottom: 0;
+  animation: hide-t 0.1s forwards ease-in;
+}
+
+@keyframes hide-t {
+  from{
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .blank {
@@ -267,6 +277,8 @@ nav {
   height: 100%;
   display: none;
   text-decoration: none;
+  transform: scaleX(0);
+  transform-origin: left;
   
   ul{
     position: relative;
@@ -293,6 +305,12 @@ nav {
       }
     }
 
+    li {
+      background: #318d2c; 
+      opacity: 0;
+      border: 2px solid #38AA31
+    }
+
     span {
       color: gray;
       display: block;
@@ -309,6 +327,28 @@ nav {
 
 .show-menu {
   display: block;
+  animation: slide-menu 0.5s ease-out forwards;
+  li {
+    animation: show-li 0.2s 0.4s ease-in forwards;
+  }
+}
+
+@keyframes slide-menu {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes show-li {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .content-section {
@@ -486,4 +526,17 @@ a.article-title:hover {
 
 .hide-list {
   opacity: 0;
+}
+
+.hide-menu {
+  animation: hide-burger 0.1s ease-in forwards;
+}
+
+@keyframes hide-burger {
+  from{
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

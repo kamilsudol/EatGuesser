@@ -108,13 +108,33 @@ h3 {
   float: left;
   bottom: 0;
   left: 0;
-  width: 15%;
+  width: 12%;
+  z-index: -1;
 }
 
 .hide-triangle {
   position: absolute;
-  opacity: 0;
   bottom: 0;
+  -webkit-animation: hide-t 0.1s forwards ease-in;
+          animation: hide-t 0.1s forwards ease-in;
+}
+
+@-webkit-keyframes hide-t {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hide-t {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .blank {
@@ -272,6 +292,10 @@ nav {
   height: 100%;
   display: none;
   text-decoration: none;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
 
 nav ul {
@@ -302,6 +326,12 @@ nav ul a:hover {
   background-color: #286b24;
 }
 
+nav ul li {
+  background: #318d2c;
+  opacity: 0;
+  border: 2px solid #38AA31;
+}
+
 nav ul span {
   color: gray;
   display: block;
@@ -316,6 +346,53 @@ nav .nav-bt {
 
 .show-menu {
   display: block;
+  -webkit-animation: slide-menu 0.5s ease-out forwards;
+          animation: slide-menu 0.5s ease-out forwards;
+}
+
+.show-menu li {
+  -webkit-animation: show-li 0.2s 0.4s ease-in forwards;
+          animation: show-li 0.2s 0.4s ease-in forwards;
+}
+
+@-webkit-keyframes slide-menu {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@keyframes slide-menu {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes show-li {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes show-li {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .content-section {
@@ -491,5 +568,28 @@ a.article-title:hover {
 
 .hide-list {
   opacity: 0;
+}
+
+.hide-menu {
+  -webkit-animation: hide-burger 0.1s ease-in forwards;
+          animation: hide-burger 0.1s ease-in forwards;
+}
+
+@-webkit-keyframes hide-burger {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hide-burger {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=main.css.map */

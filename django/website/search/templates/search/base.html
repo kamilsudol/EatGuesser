@@ -146,9 +146,8 @@
 
     openMenu.addEventListener('click', function(){
       overlay.classList.add('show-menu');
-      triangle.classList.remove('triangle');
+      openMenu.classList.add('hide-menu')
       triangle.classList.add('hide-triangle');
-      openMenu.classList.remove('menu-btn');
     });
 
 
@@ -166,9 +165,8 @@
 
     document.getElementById('f').addEventListener('click', function(){
       overlay.classList.remove('show-menu');
-      triangle.classList.add('triangle');
       triangle.classList.remove('hide-triangle');
-      openMenu.classList.add('menu-btn');
+      openMenu.classList.remove('hide-menu');
     });
 
   </script>
