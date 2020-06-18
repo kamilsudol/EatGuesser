@@ -60,6 +60,10 @@
 		<pre class="tab">
 		</pre>
 		<div class="row" method="GET" action="{% url 'search-results' %}">
+			<label class="container" for="sort">Sort by calories
+				<input type="checkbox" id="sort" name="sort" value="t">
+				<span class="checkmark"></span>
+			</label>
 			<label class="container" for="blncd">Balanced 
 				<input type="checkbox" id="blncd" name="blncd" value="t">
 				<span class="checkmark"></span>
@@ -72,12 +76,12 @@
 				<input type="checkbox" id="lfat" name="lfat" value="t">
 				<span class="checkmark"></span>
 			</label>
+		</div>
+		<div class="row">
 			<label class="container" for="lcarb">Low-carb
 				<input type="checkbox" id="lcarb" name="lcarb" value="t">
 				<span class="checkmark"></span>
 			</label>
-		</div>
-		<div class="row">
 			<label class="container" for="sugcon">Sugar-consious
 				<input type="checkbox" id="sugcon" name="sugcon" value="t">
 				<span class="checkmark"></span>

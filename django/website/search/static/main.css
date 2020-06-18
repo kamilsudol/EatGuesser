@@ -387,12 +387,16 @@ a.article-title:hover {
 .account-img {
   height: 125px;
   width: 125px;
+  margin-left: 50px;
   margin-right: 20px;
+  margin-top: 16px;
   margin-bottom: 16px;
 }
 
 .account-heading {
   font-size: 2.5rem;
+  margin-left: 3.5em;
+  margin-top: 0.5em;
 }
 
 .media-body {
@@ -462,5 +466,26 @@ a.article-title:hover {
   width: 100%;
   height: 100%;
   opacity: 10%;
+}
+
+.form-group {
+  display: block;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.ml-2 {
+  white-space: pre-line;
+  color: #38AA31;
+  -webkit-text-decoration-color: #38AA31;
+          text-decoration-color: #38AA31;
+}
+
+.ml-2:hover {
+  color: #286b24;
+  font-weight: 700;
+  text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */

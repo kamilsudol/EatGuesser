@@ -1,10 +1,13 @@
 {% extends "search/base.html" %}
 {% block content %}
-    <h2>You have been logged out</h2>
-	<div class="border-top pt-3">
-		<small class="text-muted">
-			<a href="{% url 'login' %}">Log In Again</a>
-		</small>
-	</div>
-
+<div class="article-title" style="
+	margin-left:auto;
+ 	margin-right:auto;
+	left:0;
+	padding-top: 20%;">
+    <h1>You have been logged out</h1>
+	<small class="text-muted">
+		<a class="article-content-ref" style="color: #477a49;text-decoration: underline;" href="{% url 'login' %}">Log In Again</a>
+	</small>
+</div>
 {% endblock content %}
