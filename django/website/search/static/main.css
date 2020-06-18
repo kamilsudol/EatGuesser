@@ -488,4 +488,8 @@ a.article-title:hover {
   font-weight: 700;
   text-decoration: none;
 }
+
+.hide-list {
+  opacity: 0;
+}
 /*# sourceMappingURL=main.css.map */
