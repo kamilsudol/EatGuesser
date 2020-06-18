@@ -194,6 +194,7 @@ h3 {
   left: 0;
   height: 25px;
   width: 25px;
+  border: 1px solid #286b24;
   background-color: #eee;
 }
 
@@ -299,6 +300,11 @@ nav {
       margin-top: 20px;
     }
   }
+
+  .nav-bt {
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 .show-menu {
@@ -315,15 +321,19 @@ nav {
 }
 
 .article-title {
-  float: right;
-  position: static;
+  position: relative;
+  display: block;
   text-align: center;
   color: #38AA31;
   font-size: 25px;
-  width: 100%;
+  width: 50%;
+  left: -5%;
   margin-top: 1em;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 1em;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 a.article-title:hover {
@@ -426,7 +436,7 @@ a.article-title:hover {
 .shopping-list {
   position: fixed;
   float: right;
-  top: 2.2em;
+  top: 40%;
   width: 20%;
   right: 20px;
   z-index: 2;
@@ -438,4 +448,14 @@ a.article-title:hover {
 .new-prod {
   margin-left: auto;
   margin-right: auto;
+}
+
+.bg{
+  position:absolute;
+  z-index: -2;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  opacity: 10%;
 }

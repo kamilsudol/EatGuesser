@@ -1,19 +1,21 @@
 {% extends "search/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-{% for i in data%}
+{% for i in data %}
+    <pre class="tab">
+    </pre>
     <div class="content-section">
-    	<form method="POST">
+    	<form id="f" method="POST">
     		{% csrf_token %}
         </form>
-        
-    	<div >
-               <!-- {{recipe_data|crispy}}-->
-               <p><h4>{{i.title}}</h4></p>
-               <div>
-                {{i.description}}
-               </div>
-               
+    	<div>
+            <pre class="tab">
+            </pre>
+            <!-- {{recipe_data|crispy}}-->
+            <h1>{{i.title}}</h1>
+            <div>
+            {{i.description}}
+            </div>
         </div>
        
     </div>

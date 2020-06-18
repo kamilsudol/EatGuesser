@@ -1,21 +1,18 @@
 {% extends "search/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<p><h4>Products to buy:</h4></p>
-
-    <div class="content-section">
+<p><h4 style="margin-right:30%; margin-left:30%;">Products to buy:</h4></p>
+    <div class="content-section" id="f">
     	<form method="POST">
     		{% csrf_token %}
         </form>
-        
-    	<div >
-               
+    	<div>
                <div>
-                {{data.ingredients}}
+                    <a style="color: #477a49;">
+                    {{data.ingredients}}
+                    </a>
                </div>
-               
         </div>
-       
     </div>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
